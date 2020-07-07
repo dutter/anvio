@@ -27,18 +27,7 @@ function checkNews() {
 
             if (unread_count > 0) {
                 $('#toggle-panel-right-3').css('color', '#FF0000');
-                $('#toggle-panel-right-3').addClass('fading-button');
-		
-		$('#toggle-panel-right-3').mouseover(function() {
-			if(!$('#news-panel').is(':visible')) {
-				$(this).addClass('toggle-panel-right-pos-3');
-                		toggleRightPanel('#news-panel');
-                		$('#toggle-panel-right-3-inner').html('&#9658;');
-                	}
-		});
-            } else {
-		// remove upon starting interface in case 'last-seen-hash' cookie is not cleared
-	    	$('#news-mark-read').remove();
+                $('#toggle-panel-right-3').addClass('glowing-button');
             }
         }
     });
@@ -47,8 +36,6 @@ function checkNews() {
 function newsMarkRead() {
     $('.blue-dot').remove();
     $('#toggle-panel-right-3').css('color', '#000000');
-    $('#toggle-panel-right-3').removeClass('fading-button');
-    $('#news-mark-read').remove();
-    $('#toggle-panel-right-3').off('mouseover');
+    $('#toggle-panel-right-3').removeClass('glowing-button');
     createCookie('last_seen_hash', md5($('.news-item > h1')[0].textContent), -1);
 }
